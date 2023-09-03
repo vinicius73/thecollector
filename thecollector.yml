@@ -1,5 +1,5 @@
 timezone: ${TZ}
-target_dir: ./dumps
+target_dir: ${THECOLLECTOR_TARGET_DIR}
 
 database:
   host: "${DB_HOST}"
