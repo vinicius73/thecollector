@@ -1,3 +1,4 @@
+timezone: ${TZ}
 target_dir: ./dumps
 
 database:
@@ -5,12 +6,10 @@ database:
   port: ${DB_PORT}
   username: "${DB_USER}"
   password: "${DB_PASSWORD}"
-  dsn: "${DB_DSN}"
-  ca: "${DB_SSL}"
 
 logger:
-  level: "debug"
-  format: "text"
+  level: "${LOG_LEVEL}"
+  format: "${LOG_FORMAT}"
 
 sync:
   bucket: "${BUCKET_NAME}"
@@ -25,4 +24,4 @@ datasources:
 schedules:
   - action: dump
     cron:
-      - "0 1 * * *"
+      - "${SCHEDULE_DUMP_CRON}"

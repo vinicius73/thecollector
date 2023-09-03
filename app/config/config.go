@@ -17,7 +17,7 @@ type App struct {
 	Logger      logger.Config     `yaml:"logger"`
 	SyncOptions cloud.SyncOptions `yaml:"sync"`
 	TargetDir   string            `yaml:"target_dir" default:"./dumps"`
-	Timezone    string            `yaml:"timezone"`
+	Timezone    string            `yaml:"timezone" default:"UTC"`
 	Datasources []string          `yaml:"datasources"`
 	Schedules   cron.Schedules    `yaml:"schedules"`
 }

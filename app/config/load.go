@@ -42,6 +42,18 @@ func applyDefaults(cfg App) (*App, error) {
 		return &cfg, err
 	}
 
+	if cfg.TargetDir == "" {
+		cfg.TargetDir = support.GetEnv("THECOLLECTOR_TARGET_DIR", "./dumps")
+	}
+
+	if !filepath.IsAbs(cfg.TargetDir) {
+		if pwd, err := os.Getwd(); err == nil {
+			cfg.TargetDir = filepath.Join(pwd, cfg.TargetDir)
+		} else {
+			return &cfg, err
+		}
+	}
+
 	return &cfg, nil
 }
 
