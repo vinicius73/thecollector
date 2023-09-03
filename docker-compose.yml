@@ -1,0 +1,12 @@
+version: "3.9"
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    restart: unless-stopped
+    ports:
+      - "${DB_PORT:-5432}:5432"
+    environment:
+      POSTGRES_USER: ${DB_USER:-theconnector}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-theconnector}
+      POSTGRES_DB: ${DB_NAME:-theconnector}

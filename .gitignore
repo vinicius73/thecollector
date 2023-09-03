@@ -1,0 +1,35 @@
+# Logs
+.idea
+logs
+*.log
+
+# Binaries for programs and plugins
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+dist
+.idea
+
+# Bin folder
+bin/*
+!bin/.gitkeep
+
+# outputs folder
+outputs/**
+!outputs/*/.gitkeep
+
+# outputs folder
+dumps/**
+!dumps/.gitkeep
+
+.env
+.env.prod
+*.db
+*.sqlite
+
+*.gz
+*.pg_dump
+.DS_Store

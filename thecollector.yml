@@ -1,0 +1,28 @@
+target_dir: ./dumps
+
+database:
+  host: "${DB_HOST}"
+  port: ${DB_PORT}
+  username: "${DB_USER}"
+  password: "${DB_PASSWORD}"
+  dsn: "${DB_DSN}"
+  ca: "${DB_SSL}"
+
+logger:
+  level: "debug"
+  format: "text"
+
+sync:
+  bucket: "${BUCKET_NAME}"
+  parallels: 3
+  credentials:
+    key: "${BUCKET_KEY}"
+    secret: "${BUCKET_SECRET}"
+
+datasources:
+  - ${DB_NAME}
+
+schedules:
+  - action: dump
+    cron:
+      - "0 1 * * *"
