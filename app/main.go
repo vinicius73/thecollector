@@ -43,9 +43,9 @@ func main() {
 				return err
 			}
 
-			logger.SetupLogger(agentConfig.Logger, cmd.String("level"), agentConfig.Tags())
+			logger.SetupLogger(agentConfig.Logger, cmd.String("level"), nil)
 
-			log := logger.Logger("cli", nil)
+			log := logger.Logger("", nil)
 
 			cmd.Context = log.WithContext(agentConfig.WithContext(cmd.Context))
 
