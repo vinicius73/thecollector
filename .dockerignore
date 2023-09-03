@@ -1,0 +1,7 @@
+.vscode
+.github
+bin
+dumps
+.env
+.env*
+/*.md
