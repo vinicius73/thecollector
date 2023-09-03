@@ -126,12 +126,19 @@ tasks:
       - "{{.EXTRA_ENVS}} go build {{.BUILDFLAGS}} {{.LDFLAGS}} -o {{.DIR_DIST}}/{{.BIN_NAME}} ./app"
       - chmod +x {{.DIR_DIST}}/{{.BIN_NAME}}
       - cd {{.DIR_DIST}} && ls -lh | tr -s ' ' | cut -d ' ' -f 5,9-
+      - echo "Build {{.BIN_NAME}} done"
+      - |
+        if [ "{{.UPX}}" = "true" ]; then
+          upx -8 {{.DIR_DIST}}/{{.BIN_NAME}};
+          cd {{.DIR_DIST}} && ls -lh | tr -s ' ' | cut -d ' ' -f 5,9-;
+        fi
     vars:
       LDFLAGS: -ldflags "-X {{.PKG_NAME}}/pkg.commit={{.GIT_HASH}} -X {{.PKG_NAME}}/pkg.version={{.APP_VERSION}} -X {{.PKG_NAME}}/pkg.buildDate={{.BUILD_DATE}}"
       GOOS: '{{default "linux" .GOOS}}'
       GOARCH: '{{default "amd64" .GOARCH}}'
       CGO_ENABLED: "{{default 0 .CGO_ENABLED}}"
       BIN_NAME: "{{.APP_BASE_NAME}}--{{.GOOS}}-{{.GOARCH}}"
+      UPX: "{{default false .UPX}}"
     env:
       GOOS: "{{.GOOS}}"
       GOARCH: "{{.GOARCH}}"
@@ -154,3 +161,4 @@ tasks:
         vars:
           BUILDFLAGS: -a -installsuffix cgo -ldflags '-s -w -extldflags "-static"'
           CGO_ENABLED: 0
+          UPX: true

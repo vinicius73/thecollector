@@ -2,7 +2,7 @@
 
 FROM golang:1.21-alpine as builder
 
-RUN apk add --update --no-cache gcc g++
+RUN apk add --update --no-cache gcc g++ upx
 
 WORKDIR /app
 
@@ -19,9 +19,12 @@ ENV CGO_ENABLED=0
 RUN go build \
   -a -installsuffix cgo -ldflags '-s -w -extldflags "-static"' \
   -ldflags "-X $PKG/pkg/vars.commit=$GIT_HASH -X $PKG/pkg/vars.version=$APP_VERSION -X $PKG/pkg/vars.buildDate=$BUILD_DATE" \
-  -o ./bin/thecollector ./app
+  -o ./bin/thecollector ./app && \
+  upx -8 ./bin/thecollector
 
 FROM alpine:3
+
+RUN apk add --update --no-cache ca-certificates tzdata postgresql15-client
 
 # args
 ARG APP_REVISION=unknown
@@ -53,7 +56,6 @@ ENV GIT_HASH=$GIT_HASH \
   THECOLLECTOR_CONFIG_FILE=/thecollector/config.yml \
   THECOLLECTOR_TARGET_DIR=/thecollector/outputs
 
-RUN apk add --update --no-cache ca-certificates tzdata postgresql15-client
 
 COPY docker/docker-entrypoint.sh /docker-entrypoint.sh
 COPY thecollector.yml /thecollector/config.yml
