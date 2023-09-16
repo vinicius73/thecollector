@@ -8,15 +8,17 @@ import (
 	"github.com/rs/zerolog"
 	"github.com/vinicius73/thecollector/pkg/cloud"
 	"github.com/vinicius73/thecollector/pkg/database"
+	"github.com/vinicius73/thecollector/pkg/housekeeping"
 	"github.com/vinicius73/thecollector/pkg/tasks"
 )
 
 type WorkerOptions struct {
-	Database    database.Config
-	SyncOptions cloud.SyncOptions
-	Datasources []string
-	TargetDir   string
-	Timezone    string
+	Database     database.Config
+	SyncOptions  cloud.SyncOptions
+	Housekeeping housekeeping.Config
+	Datasources  []string
+	TargetDir    string
+	Timezone     string
 }
 
 type Worker struct {
@@ -95,11 +97,12 @@ func (w Worker) register(ctx context.Context, entry Schedule) error {
 	ctx = logger.WithContext(ctx)
 
 	opt := tasks.Options{
-		TargetDir:   w.options.TargetDir,
-		Database:    w.options.Database,
-		Datasources: w.options.Datasources,
-		SyncOptions: w.options.SyncOptions,
-		Debug:       false,
+		TargetDir:    w.options.TargetDir,
+		Database:     w.options.Database,
+		Datasources:  w.options.Datasources,
+		SyncOptions:  w.options.SyncOptions,
+		Housekeeping: w.options.Housekeeping,
+		Debug:        false,
 	}
 
 	logger.Info().Msgf("registring cron entries")

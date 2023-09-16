@@ -29,3 +29,6 @@ schedules:
   - action: dump
     cron:
       - "${SCHEDULE_DUMP_CRON}"
+  - action: housekeeping
+    cron:
+      - "${SCHEDULE_HOUSEKEEPING_CRON}"

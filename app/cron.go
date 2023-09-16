@@ -18,11 +18,12 @@ var CronCmd = &cli.Command{
 		cfg := *config.Ctx(ctx)
 
 		worker, err := cron.New(cron.WorkerOptions{
-			TargetDir:   cfg.TargetDir,
-			Database:    cfg.Database,
-			Timezone:    cfg.Timezone,
-			Datasources: cfg.Datasources,
-			SyncOptions: cfg.SyncOptions,
+			TargetDir:    cfg.TargetDir,
+			Database:     cfg.Database,
+			Timezone:     cfg.Timezone,
+			Datasources:  cfg.Datasources,
+			SyncOptions:  cfg.SyncOptions,
+			Housekeeping: cfg.Housekeeping,
 		})
 		if err != nil {
 			return err
