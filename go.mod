@@ -3,7 +3,7 @@ module github.com/vinicius73/thecollector
 go 1.21.0
 
 require (
-	github.com/aws/aws-sdk-go v1.45.2
+	github.com/aws/aws-sdk-go v1.45.11
 	github.com/codingsince1985/checksum v1.3.0
 	github.com/creasty/defaults v1.7.0
 	github.com/go-co-op/gocron v1.33.1
@@ -28,7 +28,7 @@ require (
 	github.com/vmihailenco/msgpack/v5 v5.3.5 // indirect
 	github.com/xrash/smetrics v0.0.0-20201216005158-039620a65673 // indirect
 	go.uber.org/atomic v1.11.0 // indirect
-	golang.org/x/crypto v0.12.0 // indirect
-	golang.org/x/net v0.14.0 // indirect
+	golang.org/x/crypto v0.13.0 // indirect
+	golang.org/x/net v0.15.0 // indirect
 	golang.org/x/sys v0.12.0 // indirect
 )

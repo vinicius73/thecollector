@@ -1,4 +1,4 @@
-# github.com/aws/aws-sdk-go v1.45.2
+# github.com/aws/aws-sdk-go v1.45.11
 ## explicit; go 1.11
 github.com/aws/aws-sdk-go/aws
 github.com/aws/aws-sdk-go/aws/arn
@@ -118,10 +118,10 @@ github.com/xrash/smetrics
 # go.uber.org/atomic v1.11.0
 ## explicit; go 1.18
 go.uber.org/atomic
-# golang.org/x/crypto v0.12.0
+# golang.org/x/crypto v0.13.0
 ## explicit; go 1.17
 golang.org/x/crypto/blake2s
-# golang.org/x/net v0.14.0
+# golang.org/x/net v0.15.0
 ## explicit; go 1.17
 golang.org/x/net/html
 golang.org/x/net/html/atom
