@@ -52,14 +52,15 @@ ENV GIT_HASH=$GIT_HASH \
   APP_REVISION=$APP_REVISION \
   TZ=America/Sao_Paulo \
   LOG_LEVEL=info \
-  SCHEDULE_DUMP_CRON="0 1 * * *"\
+  SCHEDULE_DUMP_CRON="0 1 * * *" \
+  HOUSEKEEPING_KEEP_LOCAL=336h \
+  HOUSEKEEPING_WORKERS=2 \
   THECOLLECTOR_CONFIG_FILE=/thecollector/config.yml \
   THECOLLECTOR_TARGET_DIR=/thecollector/outputs
 
 
 COPY docker/docker-entrypoint.sh /docker-entrypoint.sh
 COPY thecollector.yml /thecollector/config.yml
-
 
 ENV UID=1000
 ENV GID=1000

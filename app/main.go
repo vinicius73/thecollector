@@ -22,7 +22,7 @@ func main() {
 		Usage:                "Database Backup Tool",
 		Copyright:            "@vinicius73 - github.com/vinicius73/thecollector",
 		Version:              vars.Version(),
-		Commands:             []*cli.Command{DumpCmd, CronCmd},
+		Commands:             []*cli.Command{DumpCmd, CronCmd, HousekeepingCmd},
 		Flags: []cli.Flag{
 			&cli.StringFlag{
 				Name:        "config",

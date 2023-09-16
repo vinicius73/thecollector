@@ -21,6 +21,10 @@ sync:
 datasources:
   - ${DB_NAME}
 
+housekeeping:
+  keep_local: ${HOUSEKEEPING_KEEP_LOCAL}
+  workers: ${HOUSEKEEPING_WORKERS}
+
 schedules:
   - action: dump
     cron:
